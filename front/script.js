@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const resultsContainer = document.getElementById("results");
 
-  fetch("http://localhost:8000/data")
+  fetch("/data")
     .then((response) => {
       if (!response.ok) {
         throw new Error("Network response was not ok");

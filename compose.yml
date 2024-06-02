@@ -4,9 +4,11 @@ services:
     image: nginx:1-alpine
     ports:
       - 8089:80
+      - 443:443
     volumes:
       - ./front/:/usr/share/nginx/html
       - ./default.conf:/etc/nginx/conf.d/default.conf
+      - ./certbot/data/letsencrypt:/etc/letsencrypt:ro
     depends_on:
       - backend
 
@@ -47,8 +49,8 @@ services:
     image: "infinityofspace/certbot_dns_duckdns:latest"
     container_name: "certbot_dns_duckdns"
     volumes:
-      - ".certbot/data/letsencrypt:/etc/letsencrypt"
-      - ".certbot/data/logs:/var/log/letsencrypt"
+      - "./certbot/data/letsencrypt:/etc/letsencrypt"
+      - "./certbot/data/logs:/var/log/letsencrypt"
     command: certonly
       --non-interactive
       --agree-tos

@@ -11,6 +11,7 @@ services:
       - ./certbot/data/letsencrypt:/etc/letsencrypt:ro
     depends_on:
       - backend
+      - certbot
 
   backend:
     image: node:20.0.0-alpine

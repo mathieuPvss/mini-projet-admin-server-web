@@ -1,2 +1,4 @@
 /backend/.npm
 **/.npm
+/certbot/data
+**/certbot/data

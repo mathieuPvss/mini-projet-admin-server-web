@@ -42,3 +42,29 @@ services:
       - 8080:8080
     depends_on:
       - db
+
+  certbot:
+    image: "infinityofspace/certbot_dns_duckdns:latest"
+    container_name: "certbot_dns_duckdns"
+    volumes:
+      - ".certbot/data/letsencrypt:/etc/letsencrypt"
+      - ".certbot/data/logs:/var/log/letsencrypt"
+    command: certonly
+      --non-interactive
+      --agree-tos
+      --email mathieupannetrat5@gmail.com
+      --preferred-challenges dns
+      --authenticator dns-duckdns
+      --dns-duckdns-token d2c8649e-31f2-4a28-8ee6-0fc52d98f69e
+      --dns-duckdns-propagation-seconds 30
+      -d mapa-project.duckdns.org
+
+  certbot_cron:
+    build:
+      context: ./certbot_cron
+    container_name: "certbot_cron"
+    restart: unless-stopped
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    environment:
+      - CERTBOT_CONTAINER_NAME=certbot_dns_duckdns

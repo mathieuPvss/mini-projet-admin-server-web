@@ -61,7 +61,7 @@ services:
 
   certbot_cron:
     build:
-      context: ./certbot_cron
+      context: ./certbot-cron
     container_name: "certbot_cron"
     restart: unless-stopped
     volumes:

@@ -3,8 +3,8 @@ services:
   nginx:
     image: nginx:1-alpine
     ports:
-      - 8089:80
-      - 443:443
+      - 8078:80
+      - 44378:443
     volumes:
       - ./front/:/usr/share/nginx/html
       - ./default.conf:/etc/nginx/conf.d/default.conf

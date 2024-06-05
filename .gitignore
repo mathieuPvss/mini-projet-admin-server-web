@@ -1,4 +1,13 @@
 /backend/.npm
 **/.npm
+
 /certbot/data
 **/certbot/data
+
+/logs
+**/logs
+
+/fail2ban/config/fail2ban
+**/fail2ban/config/fail2ban
+/fail2ban/config/log
+**/fail2ban/config/log

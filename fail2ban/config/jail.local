@@ -1,0 +1,28 @@
+[DEFAULT]
+# Default settings for all jails
+bantime  = 3600          # Time (in seconds) that an IP is banned
+findtime = 600           # Time window (in seconds) within which the maxretry failures must occur
+maxretry = 5             # Number of failures before an IP is banned
+backend  = auto          # Log backend (auto, systemd, polling, etc.)
+
+[nginx-http-auth]
+enabled  = true          # Enable this jail
+filter   = nginx-http-auth  # The filter to use (defined in filter.d/nginx-http-auth.conf)
+action   = iptables[name=HTTP, port=http, protocol=tcp]  # Action to take (banning using iptables)
+logpath  = /remotelogs/nginx/access.log  # Path to the log file to monitor
+maxretry = 3             # Override default maxretry for this jail
+
+[adminer-auth]
+enabled  = true          # Enable this jail
+filter   = adminer-auth  # The filter to use (defined in filter.d/adminer-auth.conf)
+action   = iptables[name=Adminer, port=http, protocol=tcp]  # Action to take
+logpath  = /remotelogs/adminer/access.log  # Path to the log file to monitor
+maxretry = 3             # Override default maxretry for this jail
+
+[sshd]
+enabled  = true
+filter   = sshd
+action   = iptables[name=SSH, port=ssh, protocol=tcp]
+logpath  = %(systemd)s
+backend  = systemd
+maxretry = 5

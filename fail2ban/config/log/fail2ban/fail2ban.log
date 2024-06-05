@@ -1,0 +1,21 @@
+2024-06-05 23:45:53,596 fail2ban.server         [155]: INFO    --------------------------------------------------
+2024-06-05 23:45:53,596 fail2ban.server         [155]: INFO    Starting Fail2ban v1.0.2
+2024-06-05 23:45:53,597 fail2ban.observer       [155]: INFO    Observer start...
+2024-06-05 23:45:53,604 fail2ban.database       [155]: INFO    Connected to fail2ban persistent database '/config/fail2ban/fail2ban.sqlite3'
+2024-06-05 23:45:53,613 fail2ban.database       [155]: WARNING New database created. Version '4'
+2024-06-05 23:47:08,714 fail2ban.server         [155]: INFO    Shutdown in progress...
+2024-06-05 23:47:08,718 fail2ban.observer       [155]: INFO    Observer stop ... try to end queue 5 seconds
+2024-06-05 23:47:08,740 fail2ban.observer       [155]: INFO    Observer stopped, 0 events remaining.
+2024-06-05 23:47:08,780 fail2ban.server         [155]: INFO    Stopping all jails
+2024-06-05 23:47:08,784 fail2ban.database       [155]: INFO    Connection to database closed.
+2024-06-05 23:47:08,785 fail2ban.server         [155]: INFO    Exiting Fail2ban
+2024-06-05 23:47:25,419 fail2ban.server         [151]: INFO    --------------------------------------------------
+2024-06-05 23:47:25,419 fail2ban.server         [151]: INFO    Starting Fail2ban v1.0.2
+2024-06-05 23:47:25,420 fail2ban.observer       [151]: INFO    Observer start...
+2024-06-05 23:47:25,422 fail2ban.database       [151]: INFO    Connected to fail2ban persistent database '/config/fail2ban/fail2ban.sqlite3'
+2024-06-05 23:47:31,424 fail2ban.server         [151]: INFO    Shutdown in progress...
+2024-06-05 23:47:31,431 fail2ban.observer       [151]: INFO    Observer stop ... try to end queue 5 seconds
+2024-06-05 23:47:31,454 fail2ban.observer       [151]: INFO    Observer stopped, 0 events remaining.
+2024-06-05 23:47:31,494 fail2ban.server         [151]: INFO    Stopping all jails
+2024-06-05 23:47:31,494 fail2ban.database       [151]: INFO    Connection to database closed.
+2024-06-05 23:47:31,495 fail2ban.server         [151]: INFO    Exiting Fail2ban

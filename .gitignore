@@ -11,3 +11,6 @@
 **/fail2ban/config/fail2ban
 /fail2ban/config/log
 **/fail2ban/config/log
+
+/endlessh/logs
+**/endlessh/logs

@@ -121,4 +121,4 @@ services:
       - ../sambaTest:/share/data
     command: >
       -u "1000:1000:mathieup:mathieup:141546"
-      -s "Mathieu (sambaTest):/home/mathieup/projet-esgi-admin-server/sambaTest:rw:mathieup"
+      -s "Mathieu (sambaTest):/share/data/mathieup:rw:mathieup"

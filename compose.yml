@@ -1,6 +1,7 @@
 version: "3.8"
 services:
   nginx:
+    container_name: nginx
     image: nginx:1-alpine
     ports:
       - 8078:80
@@ -15,6 +16,7 @@ services:
       - certbot
 
   backend:
+    container_name: backend
     image: node:20.0.0-alpine
     user: node
     tty: true
@@ -32,6 +34,7 @@ services:
       - db
 
   db:
+    container_name: db
     image: postgres:16-alpine
     environment:
       POSTGRES_USER: postgres
@@ -41,6 +44,7 @@ services:
       - ./data/datasets:/docker-entrypoint-initdb.d
 
   adminer:
+    container_name: adminer
     image: adminer:latest
     ports:
       - 8080:8080
@@ -85,7 +89,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Etc/UTC
+      - TZ=Europe/Paris
     volumes:
       - ./fail2ban/config:/config
       - ./logs/nginx:/remotelogs/nginx:ro
@@ -97,10 +101,24 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Etc/UTC
+      - TZ=Europe/Paris
       - LOGFILE=TRUE
     volumes:
       - ./endlessh/logs:/config/logs
     ports:
       - 22:2222
     restart: unless-stopped
+
+  samba:
+    image: elswork/samba:latest
+    container_name: samba
+    environment:
+      - TZ=Europe/Paris
+    ports:
+      - 139:139
+      - 445:445
+    volumes:
+      - ../sambaTest:/share/data
+    command: >
+      -u "1000:1000:mathieup:mathieup:141546"
+      -s "Mathieu (sambaTest):/home/mathieup/projet-esgi-admin-server/sambaTest:rw:mathieup"

@@ -9,7 +9,7 @@ services:
     volumes:
       - ./front/:/usr/share/nginx/html
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-      - ./certbot/data/letsencrypt:/etc/letsencrypt:ro
+      - ./cloudflare/letsencrypt:/etc/letsencrypt:ro
       - ./logs/nginx:/var/log/nginx
     depends_on:
       - backend
@@ -54,20 +54,13 @@ services:
       - db
 
   certbot:
-    image: "infinityofspace/certbot_dns_duckdns:latest"
-    container_name: "certbot_dns_duckdns"
+    container_name: certbot
+    image: certbot/dns-cloudflare
+    command: certonly --non-interactive --dns-cloudflare --dns-cloudflare-credentials /opt/cloudflare/credentials --agree-tos -d mapa-server.org --server https://acme-v02.api.letsencrypt.org/directory --dry-run
     volumes:
-      - "./certbot/data/letsencrypt:/etc/letsencrypt"
-      - "./certbot/data/logs:/var/log/letsencrypt"
-    command: certonly
-      --non-interactive
-      --agree-tos
-      --email mathieupannetrat5@gmail.com
-      --preferred-challenges dns
-      --authenticator dns-duckdns
-      --dns-duckdns-token d2c8649e-31f2-4a28-8ee6-0fc52d98f69e
-      --dns-duckdns-propagation-seconds 30
-      -d mapa-project.duckdns.org
+      - ./cloudflare:/opt/cloudflare
+      - ./cloudflare/letsencrypt:/etc/letsencrypt
+      - ./cloudflare/letsencrypt/log:/var/log/letsencrypt
 
   certbot_cron:
     build:

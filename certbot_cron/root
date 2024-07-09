@@ -1,0 +1,1 @@
+0 0 * * * certbot renew --dns-cloudflare --dns-cloudflare-credentials /opt/cloudflare/credentials.ini --dns-cloudflare-propagation-seconds 10 --deploy-hook "/prevent_reload_nginx.sh" --quiet >> /var/log/letsencrypt/certbot-renew.log 2>&1

@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const resultsContainer = document.getElementById("results");
 
-  fetch("/backend")
+  fetch("https://project-backend.ualtarh.dev/data")
     .then((response) => {
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -13,8 +13,8 @@ document.addEventListener("DOMContentLoaded", () => {
       resultsContainer.innerHTML = `
           <ul>
             ${results
-              .map((result) => `<li>${JSON.stringify(result)}</li>`)
-              .join("")}
+          .map((result) => `<li>${JSON.stringify(result)}</li>`)
+          .join("")}
           </ul>
         `;
     })

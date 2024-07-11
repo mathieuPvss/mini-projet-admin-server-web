@@ -10,7 +10,7 @@ services:
     volumes:
       - ./front/:/usr/share/nginx/html
       - ./certbot/letsencrypt/etc:/etc/letsencrypt
-      - ./logs/nginx:/var/log/nginx      
+      - ./logs/nginx:/var/log/nginx
     entrypoint: sh -c '/wait-for-cert.sh'
     depends_on:
       - backend
@@ -48,8 +48,6 @@ services:
     image: adminer:latest
     ports:
       - 8080:8080
-    volumes:
-      - ./logs/adminer:/var/log/adminer
     depends_on:
       - db
 
@@ -94,7 +92,6 @@ services:
     volumes:
       - ./fail2ban/config:/config
       - ./logs/nginx:/remotelogs/nginx:ro
-      - ./logs/adminer:/remotelogs/adminer:ro
 
   endlessh:
     image: lscr.io/linuxserver/endlessh:latest

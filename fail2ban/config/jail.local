@@ -14,7 +14,7 @@ maxretry = 3             # Override default maxretry for this jail
 
 [adminer-auth]
 enabled  = true          # Enable this jail
-filter   = adminer-auth  # The filter to use (defined in filter.d/adminer-auth.conf)
+filter   = nginx-http-auth  # The filter to use (defined in filter.d/adminer-auth.conf)
 action   = iptables[name=Adminer, port=http, protocol=tcp]  # Action to take
 logpath  = /remotelogs/nginx/adminer-access_log.log  # Path to the log file to monitor
 maxretry = 3             # Override default maxretry for this jail
